@@ -1,0 +1,48 @@
+﻿1. How many rivers are cataloged in DBpedia (dbo:River)
+select distinct (COUNT(?s) AS ?num) where {
+	?s a dbo:River
+}
+
+
+2. How many portuguese rivers are registered in DBpedia?
+select distinct (COUNT(?s) AS ?nome)
+where {
+     ?s a dbo:River.
+     ?s dct:subject ?nome.
+     ?nome rdfs:label "Rivers of Portugal"@en.
+}
+
+
+3. What are the names of the portuguese rivers and what disctrict to they belong to?
+select ?name ?dist
+where {
+     ?s a dbo:River.
+     ?s dct:subject ?nome.
+     ?nome rdfs:label "Rivers of Portugal"@en.
+?s rdfs:label ?name.
+FILTER ( LANG(?name) = "pt").
+OPTIONAL{
+?s dbo:district ?i.
+?i rdfs:label ?dist.
+FILTER ( LANG(?dist) = "pt" ).
+}
+}
+
+4. Query 1 considering that a river can be of type "yago:WikicatRiversOfPortugal"
+select distinct (COUNT(?s) AS ?rivers)
+where {
+     ?s a yago:WikicatRiversOfPortugal.
+}
+
+5. Query 3 considering that a river can be of type "yago:WikicatRiversOfPortugal"
+select ?name ?dist
+where {
+     ?s a yago:WikicatRiversOfPortugal.
+?s rdfs:label ?name.
+FILTER ( LANG(?name) = "pt").
+OPTIONAL{
+?s dbo:district ?i.
+?i rdfs:label ?dist.
+FILTER ( LANG(?dist) = "pt" ).
+}
+}

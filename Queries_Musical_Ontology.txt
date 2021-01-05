@@ -1,0 +1,77 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX arqm: <http://www.semanticweb.org/eduardo/ontologies/2018/5/untitled-ontology-56#>
+
+1. What are the names of the registered composers and their dates of birth?
+select ?nome ?data
+where{
+    ?obra arqm:temCompositor ?comp.
+    	?comp arqm:nome ?nome.
+    	?comp arqm:data ?data.
+}
+
+2. What are the names of the musical pieces composed by "Valdemar Sequeira"?
+select ?title
+where{
+    ?obra arqm:temCompositor ?nomes.
+    ?nomes arqm:nome "Valdemar Sequeira" .
+    ?obra arqm:título ?title.
+}
+
+3. How many musical pieces are in the ontology?
+select (count(distinct ?ob) as ?obras) where {
+	?ob arqm:temCompositor ?comp.
+}
+
+4. How many "partituras" are there in the ontology?
+select (count(?pt) as ?partituras) where {
+	?obra arqm:temPartituraInstrumento ?pt.
+}
+
+5. Which is the musical piece with the longest duration?
+select ?title where {
+	?obras arqm:duração ?dur.
+    ?obras arqm:título ?title
+}ORDER BY DESC(xsd:integer(?dur)) LIMIT 1
+
+6. What are the names and durations of all the events created?
+select ?nome (SUM(?dur) as ?duracao) where {
+	?evento arqm:temObra ?obra.
+    	?evento arqm:nome ?nome.
+    	?obra arqm:duração ?dur.
+} GROUP BY ?nome
+
+7. In how many musical pieces is used each instrument?
+select ?name (count(distinct ?obs) as ?obras) where {
+	?obs arqm:temPartituraInstrumento ?inst.
+    ?inst arqm:nome ?name
+}GROUP BY ?name
+
+8. How many musical pieces of type "Marcha" are in the ontology?
+select (count(distinct ?mcs) as ?marchas
+where{
+    ?mcs rdf:type arqm:Marcha.
+}
+
+9. Which is longest music of type "Marcha"?
+SELECT ?obra ?duracao
+WHERE
+{
+  ?marcha rdf:type arqm:Marcha.
+  	?marcha arqm:duração ?duracao.
+}ORDER BY DESC(xsd:integer(?dur)) LIMIT 1
+
+10. List the names and dates of the events that have not occurred (by 25th of November 2020).
+SELECT DISTINCT ?nome
+WHERE
+{
+  ?evento arqm:temObra ?obra.
+    ?evento arqm:nome ?nome.
+  	?evento arqm:data ?data.
+  	FILTER (?data > "2020-11-25T10:20:13+00:00"^^xsd:dateTime)
+}
+
+
+
