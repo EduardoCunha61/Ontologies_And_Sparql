@@ -1,0 +1,39 @@
+PREFIX poke: <http://www.chalkos.net/ontologies/2015/pokemon#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace> 
+
+List the following attributes of all the pokemons in the RDF file: number, name(in English= and type.
+select ?number ?name ?type where {
+    ?poke poke:Number ?number .
+    ?poke poke:Name ?name .
+    ?poke poke:HasType ?t .
+    ?t poke:Name ?type
+    filter(lang(?name)='en' && lang(?type)='en')
+} ORDER BY ?number
+
+How many pokemons are registered in the ontology?
+select (count(?poke) as ?POKEMONS) where {
+    ?poke a poke:Pokemon .
+}
+
+How many evolutions does pokemon with the number 5 has?
+select (count(?evolves) as ?EVOLUTIONS) where {
+    ?poke poke:Number 5.
+    ?poke poke:EvolvesFrom ?evolves.
+}
+
+What are the different pokemons that the pokemon named "Eevee" can evolve to?
+select (count(?evolves) as ?EVOLUTIONS) where {
+    ?poke poke:Name "Eevee"@en.
+    ?poke poke:EvolvesFrom ?evolves.
+}
+
+How many distinct types of pokemons exist in this ontology?
+select (count(distinct(?t)) as ?TYPES) where {
+    ?poke poke:HasType ?t .
+}
+
+List how many pokemons are associated to each different type.
+select ?TYPE (count(?poke) as ?POKEMONS) where {
+    ?poke poke:HasType ?TYPE .
+} GROUP BY ?TYPE

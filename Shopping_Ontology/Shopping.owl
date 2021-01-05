@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/filth/ontologies/2018/4/21/untitled-ontology-48#"
+     xml:base="http://www.semanticweb.org/filth/ontologies/2018/4/21/untitled-ontology-48"
+     xmlns:compras="http://www.di.uminho.pt/prc2018/compras#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:untitled-ontology-48="http://www.semanticweb.org/filth/ontologies/2018/4/21/untitled-ontology-48#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.di.uminho.pt/prc2018/compras"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#compra -->
+
+    <owl:ObjectProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#compra">
+        <owl:inverseOf rdf:resource="http://www.di.uminho.pt/prc2018/compras#éCompradoPor"/>
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdfs:range rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#vende -->
+
+    <owl:ObjectProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#vende">
+        <owl:inverseOf rdf:resource="http://www.di.uminho.pt/prc2018/compras#éVendidoPor"/>
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <rdfs:range rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#éCompradoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#éCompradoPor"/>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#éVendidoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#éVendidoPor"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#codigo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#codigo">
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#email">
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#nome -->
+
+    <owl:DatatypeProperty rdf:about="http://www.di.uminho.pt/prc2018/compras#nome">
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdfs:domain rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#Cliente -->
+
+    <owl:Class rdf:about="http://www.di.uminho.pt/prc2018/compras#Cliente">
+        <rdfs:subClassOf rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <owl:disjointWith rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <owl:disjointWith rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#CompraVenda -->
+
+    <owl:Class rdf:about="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#Loja -->
+
+    <owl:Class rdf:about="http://www.di.uminho.pt/prc2018/compras#Loja">
+        <rdfs:subClassOf rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <owl:disjointWith rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#LojaGrande -->
+
+    <owl:Class rdf:about="http://www.di.uminho.pt/prc2018/compras#LojaGrande">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.di.uminho.pt/prc2018/compras#vende"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">100</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#Produto -->
+
+    <owl:Class rdf:about="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#c1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#c1">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p1"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p10"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p3"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manuelficticio@gmail.com</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Manuel Fictício</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#c2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#c2">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p1"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p4"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">joaquimficticio@gmail.com</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joaquim Fictício</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#c3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#c3">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p10"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p5"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p9"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ritaficticio@gmail.com</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rita Fictício</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#c4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#c4">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p2"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p3"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p5"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p6"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p7"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alfredoficticio@gmail.com</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alfredo Fictício</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#c5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#c5">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Cliente"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <compras:compra rdf:resource="http://www.di.uminho.pt/prc2018/compras#p4"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jaimeficticio@gmail.com</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jaime Fictício</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#l1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#l1">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p1"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p2"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p3"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">continente@continente.pt</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Continente</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#l2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#l2">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p4"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p5"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">joao@mercearia.pt</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mercearia Do João</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#l3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#l3">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p1"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p7"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talhodobairro@portugal.pt</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Talho do Bairro</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#l4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#l4">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p1"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p2"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pingodoce@pingodoce.pt</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pingo Doce</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#l5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#l5">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#CompraVenda"/>
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Loja"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p10"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p3"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p4"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p7"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p8"/>
+        <compras:vende rdf:resource="http://www.di.uminho.pt/prc2018/compras#p9"/>
+        <compras:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jumbo@jumbo.pt</compras:email>
+        <compras:nome rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jumbo</compras:nome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p1">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod1</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p10">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod10</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p2">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod2</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p3">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod3</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p4">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod4</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p5">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod5</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p6">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod6</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p7">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod7</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p8">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod8</compras:codigo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.di.uminho.pt/prc2018/compras#p9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.di.uminho.pt/prc2018/compras#p9">
+        <rdf:type rdf:resource="http://www.di.uminho.pt/prc2018/compras#Produto"/>
+        <compras:codigo>prod9</compras:codigo>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

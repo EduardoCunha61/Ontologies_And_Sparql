@@ -1,0 +1,37 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+How many countries are listed in DBpedia?
+select distinct (COUNT(?s) AS ?num) where {
+	?s a dbo:Country
+}
+
+How many people have "Barbados" as their birthplace?
+select distinct COUNT(?pss) as ?num) where {
+?pais rdfs:label "Barbados"@pt.
+?pss  dbp:birthPlace ?pais.
+}
+
+What people are born in "Barbados" and are (or were) "Cricket" players?
+select ?ppl where {
+?c a dbo:Country.
+?c dbo:longName "Barbados"@en.
+?ppl dbo:birthPlace ?c.
+
+?ppl a dbo:Cricketer
+}
+
+How many actors are listed in DBPedia?
+select distinct (count(?act) as ?num) where {
+?act a umbel-rc:Actor.
+}
+
+List all the movies that "Christopher Lambert" participated.
+select distinct ?name where {
+?x foaf:name "Christopher Lambert"@en.
+?film dbo:starring ?x.
+?film foaf:name ?name
+}
+

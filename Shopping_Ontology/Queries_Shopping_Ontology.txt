@@ -1,0 +1,24 @@
+PREFIX c: <http://www.di.uminho.pt/prc2018/compras#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+What stores sell product "prod1"?
+select ?loja where { 
+    ?prod c:codigo "prod1" .
+	?l c:vende ?prod .
+    ?l c:nome ?loja .
+}
+
+What products are purchased by client "Manuel Fictício"?
+select ?prod where { 
+    ?cliente c:nome "Manuel Fictício" .
+	?cliente c:compra ?p .
+    ?p c:codigo ?prod .
+}
+
+What are the "potential" clients in store "Pingo Doce"?
+select ?cliente where { 
+    ?l c:nome 'Pingo Doce' .
+	?l c:vende ?p .
+    ?c c:compra ?p .
+	?c c:nome ?cliente .
+}

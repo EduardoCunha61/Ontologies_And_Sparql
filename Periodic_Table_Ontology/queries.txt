@@ -1,0 +1,38 @@
+﻿PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX log: <http://www.daml.org/2003/01/periodictable/PeriodicTable#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+What are the 3 elements with the highest atomic number?
+select distinct ?atmnum ?name where {
+    ?s a log:Element.
+    ?s log:name ?name.
+    ?s log:atomicNumber ?atmnum.
+} ORDER BY DESC(?atmnum) limit 3
+
+Each element in the table is part of a group. List the number and the name of each group
+select distinct ?name ?num where {
+    ?s a log:Element.
+    ?s log:group ?name.
+    ?name log:number ?num.
+}
+
+List the number, symbol and atomic number of the elements of group 18
+select distinct ?grupo ?nome ?simbolo ?numeroAtomico where {
+    ?grupo log:number ?num.
+    ?grupo a log:Group.
+    ?s a log:Element.
+    ?s log:group ?grupo.
+    ?s log:name ?nome.
+    ?s log:symbol ?simbolo.
+    ?s log:atomicNumber ?numeroAtomico.
+} ORDER BY ?grupo ?numeroAtomico
+
+How many elements are in each group?
+select ?grupo ?num (COUNT(distinct ?s) as ?num) where {
+    ?grupo log:number ?numero.
+    ?grupo a log:Group.
+    ?s a log:Element.
+    ?s log:group ?grupo.
+}GROUP BY ?grupo ORDER BY DESC(?num)
+ 

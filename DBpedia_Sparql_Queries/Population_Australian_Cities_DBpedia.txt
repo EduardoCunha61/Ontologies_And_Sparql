@@ -1,0 +1,15 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+List the 10 Australian cities with most population registered in DBpedia
+SELECT ?City str(?Name) str(?Population)  WHERE {
+ ?City a dbo:City ;
+    dbo:country dbr:Australia.
+ ?City rdfs:label ?Name FILTER ( lang(?Name) = "en" )
+ ?City dbo:populationTotal ?Population.
+
+} 
+ORDER BY DESC(?Population)
+LIMIT 10
