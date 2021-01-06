@@ -9,5 +9,5 @@ This directory contains a RDF file, exported from Protégé, that describes an o
 - According to the value of attribute "tipo", define the following subclasses of Obra : "Marcha", "Ligeiro" and "Rapsódia";
 - "Marcha" has the following subclasses: "MarchaDesfile", "MarchaProcissão" and "MarchaConcerto".
 
-After defining the OWL file in Protégé, it was generated the RDF file Musical_Ontology.rdf .
-The file Queries_Musical_Ontology.txt contains some SPARQL queries created for the analysis of this ontology.
+After exporting the OWL file in Protégé, it was implemented some SPARQL queries for a brief analysis of the ontology.
+The file Queries_Musical_Ontology.txt contains some of those queries as well as the intended purpose of each one of them.
